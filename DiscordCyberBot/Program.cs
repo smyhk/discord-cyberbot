@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
-using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
 
 namespace DiscordCyberBot
 {
     class Program
     {
         private readonly DiscordSocketClient _client;
-        private readonly string token = ""; // keep this hiddden
+
+        // keep this hiddden; perhaps load from a file?
+        private readonly string token = "";
 
         // Keep the CommandService and IServiceCollection around for use with commands.
         private readonly IServiceCollection _map = new ServiceCollection();
