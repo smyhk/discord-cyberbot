@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using System.IO;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
@@ -13,7 +14,7 @@ namespace DiscordCyberBot
         private readonly DiscordSocketClient _client;
 
         // keep this hiddden; perhaps load from a file?
-        private readonly string token = ""; /* regenerated and moveddd to a file */
+        private string token = ""; /* regenerated and moveddd to a file */
 
         // Keep the CommandService and IServiceCollection around for use with commands.
         private readonly IServiceCollection _map = new ServiceCollection();
@@ -87,6 +88,17 @@ namespace DiscordCyberBot
         {
             // Centralize the logic for commands into a seperate method.
             await InitCommands();
+
+            // Read token from a file
+            try
+            {
+                StreamReader sr = new StreamReader("token.txt");
+                token = sr.ReadLine();
+            }
+            catch (Exception e)
+            {
+                Console.Write("Exception " + e.Message);
+            }
 
             // Login and connect.
             await _client.LoginAsync(TokenType.Bot, token);
