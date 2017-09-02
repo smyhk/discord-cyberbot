@@ -13,7 +13,7 @@ namespace DiscordCyberBot
         private readonly DiscordSocketClient _client;
 
         // keep this hiddden; perhaps load from a file?
-        private readonly string token = "";
+        private readonly string token = "MzUzMzc1NTI1MDIyMDcyODM0.DIu0RA.8IMYdJ8lODNAGzF-a2eeJ-tm7rE";
 
         // Keep the CommandService and IServiceCollection around for use with commands.
         private readonly IServiceCollection _map = new ServiceCollection();

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
@@ -12,12 +8,18 @@ namespace DiscordCyberBot
     public class MyBot : ModuleBase
     {
         // define the bot's commands
+        public async Task UserJoined(SocketGuildUser user)
+        {
+            var channel = await Context.Client.GetChannelAsync(352563644711829516) as SocketTextChannel;
+            await channel.SendMessageAsync("Welcome to Valhalla " + user.Mention + "! Don't act like an idiot.");
+        }
+
         [Command("hello")]
         [Summary("say hello")]
         [Alias("Hi")]
         public async Task RegisterHelloCommand()
         {
-            await ReplyAsync("hello, " + Context.Message.Author.Mention);
+            await ReplyAsync("hello, " + Context.Message.Author.Mention + " would you like to see my tits?");
         }
 
 
